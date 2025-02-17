@@ -1,0 +1,54 @@
+.admin-panel {
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  .admin-panel h1 {
+    text-align: center;
+  }
+  
+  .bot-settings,
+  .user-management {
+    margin: 20px 0;
+  }
+  
+  .bot-settings input,
+  .user-management input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .bot-settings button,
+  .user-management button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .bot-settings button {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .user-item .block-btn {
+    background-color: #f0ad4e;
+    color: white;
+  }
+  
+  .user-item .delete-btn {
+    background-color: #d9534f;
+    color: white;
+  }
+  
