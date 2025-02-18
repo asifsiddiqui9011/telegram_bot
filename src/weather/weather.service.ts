@@ -3,7 +3,7 @@ import { HttpService } from '@nestjs/axios';
 
 @Injectable()
 export class WeatherService {
-  private readonly apiKey = process.env.WEATHER_API_KEY; // Weather API key
+  private readonly apiKey = '97beeba8b4bd48b191091720251602'; // Weather API key
 
   constructor(private readonly httpService: HttpService) {}
 

@@ -13,7 +13,7 @@ import { WeatherModule } from './weather/weather.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(`${process.env.MONGODB_URL}`), // Replace with your MongoDB connection string'
+    MongooseModule.forRoot('mongodb+srv://asifsiddiqui9011:Sd8dHGJFHw8bkqAq@cluster0.vvlp9.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'), // Replace with your MongoDB connection string'
     MongooseModule.forFeature([{ name: AdminUser.name, schema: AdminUserSchema }]),
     MongooseModule.forFeature([{ name: Subscriber.name, schema: SubscriberSchema }]),
     WeatherModule,
