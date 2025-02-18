@@ -17,7 +17,7 @@ export class TelegramService implements OnModuleInit {
     private readonly weatherService: WeatherService,
     @InjectModel(Subscriber.name) private readonly subscriberModel: Model<Subscriber>,
   ) {
-    const botToken = 'YOUR_BOT_TOKEN'; // Fetch the token from environment variables
+    const botToken = '8039005794:AAEMFe8tJxg826tU4RIXGswziwOwoLs3MbE'; // Fetch the token from environment variables
     if (!botToken) {
       throw new Error('TELEGRAM_BOT_TOKEN is not defined');
     }
