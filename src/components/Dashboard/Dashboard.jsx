@@ -297,11 +297,12 @@ const Dashboard = () => {
   const [token, setToken] = useState(null);
   const [apiKey, setApiKey] = useState('');
   const [subscribers, setSubscribers] = useState([]);
+  const url = import.meta.env.VITE_BACKEND_URL;
 
 
   const fetchSubscribers = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/admin/users');
+      const response = await axios.get(`${url}/admin/users`);
       setSubscribers(response.data);
       console.log(response.data);
     } catch (error) {
@@ -325,7 +326,7 @@ const Dashboard = () => {
   };
 
   const fetchSettings = async () => {
-    const response = await axios.get('/api/settings', {
+    const response = await axios.get(`${url}/settings`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -335,7 +336,7 @@ const Dashboard = () => {
 
   const updateApiKey = async () => {
     await axios.post(
-      '/api/settings',
+      `${url}/settings`,
       { apiKey },
       {
         headers: {
@@ -347,7 +348,7 @@ const Dashboard = () => {
 
   const blockUser = async (userId) => {
     await axios.post(
-      `http://localhost:3000/admin/block/${userId}`,
+      `${url}/admin/block/${userId}`,
       {},
       {
         headers: {
@@ -360,7 +361,7 @@ const Dashboard = () => {
 
   const unblockUser = async (userId) => {
     await axios.post(
-      `http://localhost:3000/admin/unblock/${userId}`,
+      `${url}/admin/unblock/${userId}`,
       {},
       {
         headers: {
@@ -372,7 +373,7 @@ const Dashboard = () => {
   };
 
   const deleteUser = async (userId) => {
-    await axios.delete(`http://localhost:3000/admin/users/${userId}`, {
+    await axios.delete(`${url}/admin/users/${userId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -394,32 +395,87 @@ const Dashboard = () => {
           />
           <button onClick={updateApiKey}>Update API Key</button>
         </div>
-        <div className="user-management">
+        {/* <div className="user-management">
           <h2>User Management</h2>
-          {subscribers.map((user) => (
-            <div key={user.id} className="user-item">
-              <span>{user.id}</span>
-              <span>{user.first_name}</span>
-              <span>{user.chatId}</span>
-              <span>{user.city}</span>
-              <span>{user.blocked ? 'Blocked' : 'Active'}</span>
-              <div>
-                {user.blocked ? (
-                  <button onClick={() => unblockUser(user.id)} className="unblock-btn">
-                    Unblock
-                  </button>
-                ) : (
-                  <button onClick={() => blockUser(user.id)} className="block-btn">
-                    Block
-                  </button>
-                )}
-                <button onClick={() => deleteUser(user.id)} className="delete-btn">
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+          <table className="user-table">
+            <thead>
+              <tr>
+                <th style={{ width: '5%' }}>Sr No</th>
+                <th style={{ width: '20%' }}>First Name</th>
+                <th style={{ width: '20%' }}>Chat ID</th>
+                <th style={{ width: '20%' }}>City</th>
+                <th style={{ width: '15%' }}>Status</th>
+                <th style={{ width: '20%' }}>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {subscribers.map((user, index) => (
+                <tr key={user.id}>
+                  <td>{index + 1}</td>
+                  <td>{user.first_name}</td>
+                  <td>{user.chatId}</td>
+                  <td>{user.city}</td>
+                  <td>{user.blocked ? 'Blocked' : 'Active'}</td>
+                  <td style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    {user.blocked ? (
+                      <button onClick={() => unblockUser(user._id)} className="unblock-btn">
+                        Unblock
+                      </button>
+                    ) : (
+                      <button onClick={() => blockUser(user._id)} className="block-btn">
+                        Block
+                      </button>
+                    )}
+                    <button onClick={() => deleteUser(user._id)} className="delete-btn">
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div> */}
+        <div className="user-management">
+  <h2>User Management</h2>
+  <table className="user-table">
+    <thead>
+      <tr>
+        <th>Sr No</th>
+        <th>First Name</th>
+        <th>Chat ID</th>
+        <th>City</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {subscribers.map((user, index) => (
+        <tr key={user.id}>
+          <td>{index + 1}</td>
+          <td>{user.first_name}</td>
+          <td>{user.chatId}</td>
+          <td>{user.city}</td>
+          <td>{user.blocked ? 'Blocked' : 'Active'}</td>
+          <td className="actions-cell">
+            {user.blocked ? (
+              <button onClick={() => unblockUser(user._id)} className="unblock-btn">
+                Unblock
+              </button>
+            ) : (
+              <button onClick={() => blockUser(user._id)} className="block-btn">
+                Block
+              </button>
+            )}
+            <button onClick={() => deleteUser(user._id)} className="delete-btn">
+              Delete
+            </button>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
       </div>
     </div>
   );

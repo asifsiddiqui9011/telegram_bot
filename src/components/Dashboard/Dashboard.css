@@ -52,3 +52,71 @@
     color: white;
   }
   
+
+  .user-management {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-management h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .user-table thead {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .user-table th,
+  .user-table td {
+    padding: 10px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .user-table th {
+    width: auto;
+  }
+  
+  .user-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .actions-cell {
+    display: flex;
+    gap: 10px;
+  }
+  
+  button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .unblock-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .block-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .delete-btn {
+    background-color: #d32f2f;
+    color: white;
+  }
+  

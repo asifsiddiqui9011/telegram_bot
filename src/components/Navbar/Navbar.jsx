@@ -23,11 +23,11 @@ const Navbar = () => {
         <nav className="navbar">
             <div className="navbar-logo">Admin</div>
             <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
-                <a href="/">Home</a>
+                
                 {isAuthenticated ? (
                     <button onClick={handleLogout}>Logout</button>
                 ) : (
-                    <a href="#login">Login</a>
+                    <a href="#login">Logout</a>
                 )}
             </div>
             <div className="navbar-toggle" onClick={toggleMenu}>
